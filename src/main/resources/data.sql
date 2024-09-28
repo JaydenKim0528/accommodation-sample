@@ -1,0 +1,1 @@
+insert into accommodation (acc_name) values ('롯데호텔');
