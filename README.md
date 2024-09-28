@@ -8,10 +8,11 @@ Java와 Spring Boot를 활용한 숙박 예약 시스템 샘플 프로젝트입�
 
 🛠️## 사용 기술 
 
-- ![Java](https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg) **Java 17**
-- ![Spring Boot](https://upload.wikimedia.org/wikipedia/commons/4/44/Spring_Framework_Logo_2018.svg) **Spring Boot 3.3.4**
-- ![JPA](https://upload.wikimedia.org/wikipedia/commons/2/2d/Jakarta_Persistence.svg) **JPA**
-- ![H2 Database](https://h2database.com/html/images/h2-logo-2.png) **H2 Database**
+- <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" width="40" height="40"/> **Java 17**
+- <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Spring_Framework_Logo_2018.svg" width="40" height="40"/> **Spring Boot 3.3.4**
+- <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Jakarta_Persistence.svg" width="40" height="40"/> **JPA**
+- <img src="https://h2database.com/html/images/h2-logo-2.png" width="40" height="40"/> **H2 Database**
+
 
 🎯## 프로젝트 목표 
 
