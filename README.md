@@ -1,25 +1,26 @@
-# Accommodation-Sample
+🏨# Accommodation-Sample 
 
 Java와 Spring Boot를 활용한 숙박 예약 시스템 샘플 프로젝트입니다. 이 프로젝트는 Spring Boot를 사용하여 CRUD 구조와 REST API 아키텍처를 구현하는 것을 목표로 합니다.
 
-## 프로젝트 개요
+📝## 프로젝트 개요 
 
 이 프로젝트는 숙박 예약 관리를 위한 시스템으로, 예약의 생성, 수정, 조회, 삭제 기능을 제공합니다. REST API를 통해 시스템과 상호작용할 수 있으며, 데이터를 저장하기 위해 인메모리 H2 데이터베이스를 사용합니다.
 
-## 사용 기술
+🛠️## 사용 기술 
 
-- **Java 17**
-- **Spring Boot 3.3.4**
-- **JPA**
-- **H2**
-## 프로젝트 목표
+- ![Java](https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg) **Java 17**
+- ![Spring Boot](https://upload.wikimedia.org/wikipedia/commons/4/44/Spring_Framework_Logo_2018.svg) **Spring Boot 3.3.4**
+- ![JPA](https://upload.wikimedia.org/wikipedia/commons/2/2d/Jakarta_Persistence.svg) **JPA**
+- ![H2 Database](https://h2database.com/html/images/h2-logo-2.png) **H2 Database**
+
+🎯## 프로젝트 목표 
 
 - 숙박 예약 관리를 위한 CRUD(생성, 읽기, 수정, 삭제) 구조를 구축합니다.
 - 예약 관련 서비스와 작업을 노출하는 REST API 아키텍처를 구현합니다.
 - Spring Boot를 활용하여 애플리케이션의 생명주기와 종속성을 관리합니다.
 
-## 주요 기능
+⚙️## 주요 기능 
 
-- **예약 관리**: 예약을 생성, 수정 및 삭제할 수 있습니다.
-- **사용자 관리**: 예약을 할 수 있는 사용자 관리를 제공합니다.
-- **숙박 정보**: 이용 가능한 객실 및 예약 정보를 확인할 수 있습니다.
+- 📅**예약 관리**: 예약을 생성, 수정 및 삭제할 수 있습니다. 
+- 👤**사용자 관리**: 예약을 할 수 있는 사용자 관리를 제공합니다. 
+- 🏡**숙박 정보**: 이용 가능한 객실 및 예약 정보를 확인할 수 있습니다. 
