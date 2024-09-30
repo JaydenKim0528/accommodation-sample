@@ -17,6 +17,10 @@ public class AccommodationRestController {
 
     private final AccommodationService accommodationService;
 
+    /**
+     * JPA 연결 숙박 업체 조회
+     * @PathVariable("id")
+     **/
     @GetMapping("/jpa/{id}")
     public Accommodation jpaConnection(@PathVariable("id") long id) {
         return accommodationService.getName(id);

@@ -22,6 +22,4 @@ public class Accommodation {
                 .name(entity.getName())
                 .build();
     }
-
-
 }
