@@ -1,6 +1,6 @@
-package lskim.accommodation_sample.accommodation.domain.repository;
+package lskim.accommodation_sample.domain.repository;
 
-import lskim.accommodation_sample.accommodation.domain.repository.entity.AccommodationEntity;
+import lskim.accommodation_sample.domain.repository.entities.AccommodationEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

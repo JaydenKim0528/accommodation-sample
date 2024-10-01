@@ -1,4 +1,4 @@
-package lskim.accommodation_sample.accommodation.web.common.common;
+package lskim.accommodation_sample.domain.repository.common;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
