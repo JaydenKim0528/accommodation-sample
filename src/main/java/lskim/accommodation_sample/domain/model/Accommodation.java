@@ -12,7 +12,6 @@ import lskim.accommodation_sample.domain.repository.entities.AccommodationEntity
 @AllArgsConstructor
 @Builder
 public class Accommodation {
-
     private long id;
     private String name;
     private String description;
@@ -34,4 +33,16 @@ public class Accommodation {
                 .build();
     }
 
+    public AccommodationEntity toSaveEntity() {
+        return AccommodationEntity.builder()
+                .name(this.name)
+                .description(this.description)
+                .latitude(this.geoLocation.getLatitude())
+                .longitude(this.geoLocation.getLongitude())
+                .type(this.type)
+                .isFreeParking(this.parkingInfo.isFree())
+                .parkingType(this.parkingInfo.getParkingType())
+                .locationGuideText(this.locationGuideText)
+                .build();
+    }
 }

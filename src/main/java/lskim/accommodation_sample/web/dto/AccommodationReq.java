@@ -1,17 +1,15 @@
 package lskim.accommodation_sample.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 import lskim.accommodation_sample.domain.enums.AccommodationStatus;
 import lskim.accommodation_sample.domain.enums.AccommodationType;
-import lskim.accommodation_sample.domain.enums.ImageType;
 import lskim.accommodation_sample.domain.model.GeoLocation;
 import lskim.accommodation_sample.domain.model.ParkingInfo;
-import lskim.accommodation_sample.web.validators.ValidAccommodationImage;
-
-import java.util.List;
 
 @Getter
 public class AccommodationReq {
@@ -38,12 +36,15 @@ public class AccommodationReq {
 
         private String locationGuideText;
 
-        @NotNull
-        @ValidAccommodationImage
-        private List<ImageOnCreate> imageList;
-
         @Builder
-        public Create(String name, String description, GeoLocation geoLocation, AccommodationType type, ParkingInfo parkingInfo, String locationGuideText, List<ImageOnCreate> imageList) {
+        @JsonCreator
+        public Create(
+                @JsonProperty("name") String name,
+                @JsonProperty("description") String description,
+                @JsonProperty("geoLocation") GeoLocation geoLocation,
+                @JsonProperty("type") AccommodationType type,
+                @JsonProperty("parkingInfo") ParkingInfo parkingInfo,
+                @JsonProperty("locationGuideText") String locationGuideText) {
             this.name = name;
             this.description = description;
             this.geoLocation = geoLocation;
@@ -51,19 +52,6 @@ public class AccommodationReq {
             this.status = AccommodationStatus.AVAILABLE;
             this.parkingInfo = parkingInfo;
             this.locationGuideText = locationGuideText;
-            this.imageList = imageList;
-        }
-    }
-
-    @Getter
-    public static class ImageOnCreate {
-        private ImageType imageType;
-        private String path;
-
-        @Builder
-        public ImageOnCreate(ImageType imageType, String path) {
-            this.imageType = imageType;
-            this.path = path;
         }
     }
 }

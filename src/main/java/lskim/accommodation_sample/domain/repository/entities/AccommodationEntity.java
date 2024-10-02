@@ -44,6 +44,4 @@ public class AccommodationEntity {
     private ParkingType parkingType;
 
     private String locationGuideText;
-
-
 }

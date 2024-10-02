@@ -21,4 +21,10 @@ public class AccommodationRestController extends BaseApiController {
     public Accommodation getAccommodationById(@PathVariable("id") long id) {
         return accommodationService.getName(id);
     }
+
+    @PostMapping("/accommodation/insert")
+    public Accommodation accommodationInsert(@RequestBody @Valid AccommodationReq.Create accommodationReqCreate) {
+        log.info("Insert : {}", accommodationReqCreate);
+        return null;
+    }
 }
