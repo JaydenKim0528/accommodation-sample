@@ -8,8 +8,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lskim.accommodation_sample.domain.enums.AccommodationStatus;
 import lskim.accommodation_sample.domain.enums.AccommodationType;
+import lskim.accommodation_sample.domain.enums.ImageType;
 import lskim.accommodation_sample.domain.model.GeoLocation;
 import lskim.accommodation_sample.domain.model.ParkingInfo;
+import lskim.accommodation_sample.web.validators.ValidAccommodationImage;
+
+import java.util.List;
 
 @Getter
 public class AccommodationReq {
@@ -36,6 +40,10 @@ public class AccommodationReq {
 
         private String locationGuideText;
 
+        @NotNull
+        @ValidAccommodationImage
+        private List<ImageOnCreate> imageList;
+
         @Builder
         @JsonCreator
         public Create(
@@ -44,7 +52,8 @@ public class AccommodationReq {
                 @JsonProperty("geoLocation") GeoLocation geoLocation,
                 @JsonProperty("type") AccommodationType type,
                 @JsonProperty("parkingInfo") ParkingInfo parkingInfo,
-                @JsonProperty("locationGuideText") String locationGuideText) {
+                @JsonProperty("locationGuideText") String locationGuideText,
+                @JsonProperty("imageList") List<ImageOnCreate> imageList) {
             this.name = name;
             this.description = description;
             this.geoLocation = geoLocation;
@@ -52,6 +61,21 @@ public class AccommodationReq {
             this.status = AccommodationStatus.AVAILABLE;
             this.parkingInfo = parkingInfo;
             this.locationGuideText = locationGuideText;
+            this.imageList = imageList;
+        }
+    }
+
+    @Getter
+    public static class ImageOnCreate {
+        private ImageType imageType;
+        private String path;
+
+        @Builder
+        @JsonCreator
+        public ImageOnCreate(@JsonProperty("imageType") ImageType imageType,
+                             @JsonProperty("path") String path) {
+            this.imageType = imageType;
+            this.path = path;
         }
     }
 }

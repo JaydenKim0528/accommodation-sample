@@ -21,7 +21,10 @@ public class Accommodation {
     private ParkingInfo parkingInfo;
     private String locationGuideText;
 
-    public static Accommodation of(AccommodationEntity entity) {
+    @Setter
+    private String mainImagePath;
+
+    public static Accommodation of(AccommodationEntity entity, String mainImagePath) {
         return Accommodation.builder()
                 .id(entity.getId())
                 .name(entity.getName())
@@ -30,6 +33,7 @@ public class Accommodation {
                 .type(entity.getType())
                 .parkingInfo(new ParkingInfo(entity.isFreeParking(), entity.getParkingType()))
                 .locationGuideText(entity.getLocationGuideText())
+                .mainImagePath(mainImagePath)
                 .build();
     }
 
