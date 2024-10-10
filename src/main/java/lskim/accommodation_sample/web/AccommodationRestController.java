@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lskim.accommodation_sample.domain.service.AccommodationService;
+import lskim.accommodation_sample.jwt.auth.LoginUser;
 import lskim.accommodation_sample.web.common.BaseApiController;
 import lskim.accommodation_sample.domain.model.Accommodation;
 import lskim.accommodation_sample.web.dto.AccommodationReq;
@@ -26,5 +27,11 @@ public class AccommodationRestController extends BaseApiController {
     public Accommodation accommodationInsert(@RequestBody @Valid AccommodationReq.Create accommodationReqCreate) {
         log.info("Insert : {}", accommodationReqCreate);
         return null;
+    }
+
+    @GetMapping(value = "/login-user")
+    public LoginUser argumentResolverTest(final LoginUser loginUser) {
+        log.debug("loginUser : {} ", loginUser);
+        return loginUser;
     }
 }

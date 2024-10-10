@@ -5,7 +5,11 @@ import lskim.accommodation_sample.domain.enums.ImageType;
 import lskim.accommodation_sample.domain.enums.ParkingType;
 import lskim.accommodation_sample.domain.model.GeoLocation;
 import lskim.accommodation_sample.domain.model.ParkingInfo;
+import lskim.accommodation_sample.jwt.auth.LoginUser;
+import lskim.accommodation_sample.jwt.util.JwtUtil;
 import lskim.accommodation_sample.web.dto.AccommodationReq;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -15,11 +19,12 @@ import lskim.accommodation_sample.domain.repository.common.BaseMockMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.ResultActions;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Transactional
@@ -27,6 +32,11 @@ class AccommodationRestControllerTest extends BaseMockMvcTest {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Autowired
+    private JwtUtil jwtUtil;
+
+    private LoginUser user = new LoginUser(1L, "sample");
 
     // 숙소 조회 테스트
     @Test
@@ -118,6 +128,28 @@ class AccommodationRestControllerTest extends BaseMockMvcTest {
                         .content(requestBody)
         );
         resultActions.andExpect(status().isOk());
+    }
+
+//    -----------------------------------------------------------------------------------------------------------------
+
+    @Test
+    @DisplayName("토큰 확인")
+    void tokenCheck() throws Exception {
+        // LoginUser 객체를 직접 설정
+        UsernamePasswordAuthenticationToken authentication =
+                new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        String testAccessToken = jwtUtil.createAccessToken(user);
+
+        final ResultActions actions = mockMvc.perform(get("/api/login-user")
+                .contentType(MediaType.APPLICATION_JSON)
+                .header("Authorization", "Bearer " + testAccessToken)
+        );
+
+        actions.andExpect(status().isOk())
+                .andExpect(jsonPath("$.userNo").value(user.getUserNo()))
+                .andExpect(jsonPath("$.userId").value(user.getUserId()));
     }
 
 }
